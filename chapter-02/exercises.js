@@ -26,9 +26,14 @@ LOGS =>
 
 */
 
-function triangles() {
-  
-}
+function triangles(n) {
+  let x = '';
+    for (let i = 0; i < n; i++) { 
+      x = x + '#';
+      console.log(x);
+    }
+};
+// console.log(triangles(9));
 
 
 ////////////////////////////////////////////////////////////////////////////////
