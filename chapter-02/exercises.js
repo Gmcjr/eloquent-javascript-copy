@@ -97,9 +97,24 @@ LOGS =>
 */
 
 function drawChessboard(x) {
-
-
-}
+  let board = '';
+  
+  for (let row = 0; row < x; row++) {
+    let line = '';
+    
+    for (let col = 0; col < x; col++) {
+      if ((row + col) % 2 === 0) {
+        line += ' ';
+      } else {
+        line += '#';
+      }
+    }
+    
+      board += line + '\n';
+  }
+  
+  console.log(board);
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
