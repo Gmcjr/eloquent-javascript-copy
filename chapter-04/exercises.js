@@ -3,24 +3,26 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function range(start, end, step = 1) {
+// create container array
   let rangeArr = []
-
+// return empty array if start and end are the same
   if (start === end) return rangeArr;
-
+// return empty array if negative step and start < end
   if (step < 0 && start < end) return rangeArr;
-
+// return empty array if positive step and start > end
   if (step > 0 && start > end) return rangeArr;
-
+// if step > 0, iterate from start to end and push each value to array in increments determined by step
   if (step > 0) {
     for (let i = start; i <= end; i += step) {
       rangeArr.push(i);      
     }
+// otherwise build range in increments of step if step is positive
   } else {
     for (let i = start; i >= end; i += step) {
       rangeArr.push(i);
     }
   }
-
+// return built array
   return rangeArr;
 }
 // console.log(range(3, 9));
