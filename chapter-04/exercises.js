@@ -2,9 +2,28 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
+function range(start, end, step = 1) {
+  let rangeArr = []
 
+  if (start === end) return rangeArr;
+
+  if (step < 0 && start < end) return rangeArr;
+
+  if (step > 0 && start > end) return rangeArr;
+
+  if (step > 0) {
+    for (let i = start; i <= end; i += step) {
+      rangeArr.push(i);      
+    }
+  } else {
+    for (let i = start; i >= end; i += step) {
+      rangeArr.push(i);
+    }
+  }
+
+  return rangeArr;
 }
+// console.log(range(3, 9));
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
