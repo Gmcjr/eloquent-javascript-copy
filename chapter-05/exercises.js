@@ -22,16 +22,37 @@ function loop(value, test, update, body) {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, test) {
+  for (let i = 0; i < array.length; i++) {
+    if (!test(array[i])) {
+      return false;
+    }
+  }
+   return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
+function dominantDirection(text) {
+  function characterScript(code) {
+    for (let script of SCRIPTS) {
+      if (script.ranges.some(([from, to]) => code >= from && code <= to)) {
+        return script;
+      }
+    }
+    return null;
+  }
+  
+  let counted = countBy(text, char => {
+    let script = characterScript(char.codePointAt(0));
+    return script ? script.direction : "none";
+  }).filter(({name}) => name != "none");
 
+  if (counted.length == 0) return "ltr";
+
+  return counted.reduce((a, b) => a.count > b.count ? a : b).name;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
